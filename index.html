@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>TASHA'S CLOTHING STORE</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<footer>
+
+<p>
+© 2026 TASHA'S CLOTHING STORE
+</p>
+
+</footer>
+<body>
+<section class="hero">
+
+<h1>Welcome to TASHA'S CLOTHING STORE</h1>
+
+<p>
+Discover trendy fashion at affordable prices.
+</p>
+
+<a href="#products">
+<button class="shop-btn">
+🛍️ Shop Now
+</button>
+</a>
+
+</section>
+
+<header>
+<section class="banner">
+
+<img src="images/banner.jpg" alt="TASHA'S CLOTHING STORE Banner">
+
+</section>
+<div class="logo">
+
+<img src="images/logo.png" alt="Logo">
+
+<h1>TASHA'S CLOTHING STORE</h1>
+
+</div>
+
+
+<input id="search" placeholder="Search clothes...">
+
+
+<select id="categoryFilter">
+
+<option value="All">All Categories</option>
+
+<option value="Dresses">Dresses</option>
+
+<option value="Shirts">Shirts</option>
+
+<option value="Shoes">Shoes</option>
+
+<option value="Trousers">Trousers</option>
+
+</select>
+
+
+<nav>
+
+<a href="cart.html">
+🛒 Cart
+</a>
+
+<a href="orders.html">
+📦 My Orders
+</a>
+<a href="about.html">ℹ️ About Us</a>
+  <a href="contact.html">📞 Contact</a>
+  <a href="privacy.html">
+🔒 Privacy Policy
+  </a>
+  <a href="returns.html">🔄 Return Policy</a>
+<a href="customer-login.html">
+👤 Login
+</a>
+
+<button id="logoutBtn">
+Logout
+</button>
+
+</nav>
+
+</header>
+
+
+
+<h2>⭐ Featured Products</h2>
+
+<div id="featuredProducts"></div>
+
+
+<h2>🆕 New Arrivals</h2>
+
+<div id="products" class="products-grid"></div>
+
+
+<script type="module">
+
+import { auth } from "./firebase.js";
+
+import {
+signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+document.getElementById("logoutBtn").onclick = async function(){
+
+await signOut(auth);
+
+alert("Logged out");
+
+location.reload();
+
+};
+
+</script>
+<script type="module" src="script.js"></script>
+
+
+</body>
+
+</html>

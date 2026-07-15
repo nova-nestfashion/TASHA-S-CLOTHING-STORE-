@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>TASHA'S ADMIN DASHBOARD</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>TASHA'S CLOTHING STORE</h1>
+
+<h2>Admin Dashboard</h2>
+
+</header>
+
+<section>
+
+<h3>Add Product</h3>
+
+<input id="name" placeholder="Product Name">
+
+<br><br>
+
+<input id="price" type="number" placeholder="Price">
+
+<br><br>
+
+<input id="category" placeholder="Category">
+
+<br><br>
+
+<input id="stock" type="number" placeholder="Stock Quantity">
+  <br><br>
+
+<label>
+<input type="checkbox" id="featured">
+
+Featured Product
+</label>
+<br><br>
+
+<input id="sizes" placeholder="Sizes (example: S,M,L,XL)">
+
+<br><br>
+
+<input id="colors" placeholder="Colors (example: Black,White,Blue)">
+<br><br>
+
+<input id="image1" placeholder="Image Link 1">
+
+<br><br>
+
+<input id="image2" placeholder="Image Link 2">
+
+<br><br>
+
+<input id="image3" placeholder="Image Link 3">
+
+<br><br>
+
+<input id="image4" placeholder="Image Link 4">
+
+<br><br>
+
+<button id="addBtn">
+Add Product
+</button>
+
+<hr>
+
+<h2>Dashboard</h2>
+
+<p>Total Products: <span id="totalProducts">0</span></p>
+
+<p>Total Orders: <span id="totalOrders">0</span></p>
+
+<p>Pending Orders: <span id="pendingOrders">0</span></p>
+
+<p>Total Sales: <span id="totalSales">K0</span></p>
+
+<p>Low Stock Products: <span id="lowStockProducts">0</span></p>
+
+<hr>
+
+<h2>Manage Products</h2>
+
+<div id="adminProducts"></div>
+
+<hr>
+
+<h2>Customer Orders</h2>
+
+<div id="orders"></div>
+
+<br>
+
+<button onclick="logout()">
+Logout
+</button>
+
+</section>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>
