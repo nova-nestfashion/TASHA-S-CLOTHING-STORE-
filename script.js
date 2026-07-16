@@ -6,6 +6,7 @@ getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const productsDiv = document.getElementById("products");
+console.log("Products section found:", productsDiv);
 const featuredDiv = document.getElementById("featuredProducts");
 const search = document.getElementById("search");
 const categoryFilter = document.getElementById("categoryFilter");
@@ -14,6 +15,8 @@ let allProducts = [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 async function loadProducts(){
+
+    alert("Loading products...");
 
     try{
 
