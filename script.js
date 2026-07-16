@@ -16,8 +16,6 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 async function loadProducts(){
 
-    alert("Loading products...");
-
     try{
 
         const snapshot = await getDocs(collection(db,"products"));
@@ -33,17 +31,13 @@ async function loadProducts(){
 
         });
 
-        alert("Products loaded: " + allProducts.length);
+        console.log("All products:", allProducts);
 
         displayProducts(allProducts);
 
-        if(featuredDiv){
-
-            displayFeatured(
-                allProducts.filter(product => product.featured === true)
-            );
-
-        }
+        // displayFeatured(
+        // allProducts.filter(product => product.featured === true)
+        // );
 
     }catch(error){
 
