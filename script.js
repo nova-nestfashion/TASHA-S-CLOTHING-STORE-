@@ -1,5 +1,4 @@
 import { db } from "./firebase.js";
-alert("SCRIPT JS IS RUNNING");
 
 import {
 collection,
@@ -30,6 +29,8 @@ async function loadProducts(){
             });
 
         });
+
+        alert("Products loaded: " + allProducts.length);
 
         displayProducts(allProducts);
 
