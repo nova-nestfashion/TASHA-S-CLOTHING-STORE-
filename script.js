@@ -199,4 +199,6 @@ product.category===category
 
 }
 
-loadProducts();
+loadProducts().then(()=>{
+    alert("Finished loading products");
+});
