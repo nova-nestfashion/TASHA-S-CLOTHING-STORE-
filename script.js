@@ -19,6 +19,47 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 
+// Load products
+
+async function loadProducts(){
+
+try{
+
+const snapshot = await getDocs(collection(db,"products"));
+
+allProducts = [];
+
+snapshot.forEach((doc)=>{
+
+allProducts.push({
+
+id:doc.id,
+
+...doc.data()
+
+});
+
+});
+
+console.log(allProducts);
+
+displayProducts(allProducts);
+
+displayFeatured(
+allProducts.filter(product => product.featured === true)
+);
+
+}catch(error){
+
+console.error(error);
+
+alert(error.message);
+
+}
+
+}
+
+
 // Display products
 
 function displayProducts(products){
@@ -226,3 +267,4 @@ window.viewProduct = function(id){
     window.location.href = "product.html?id=" + id;
 
 };
+loadProducts();
