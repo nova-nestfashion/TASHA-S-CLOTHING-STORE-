@@ -1,23 +1,66 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>TASHA'S CLOTHING STORE Admin</title>
+
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<h2>Admin Login</h2>
 
-<input id="username" type="email" placeholder="Email">
-<br><br>
+<header>
 
-<input id="password" type="password" placeholder="Password">
-<br><br>
+<h1>
+TASHA'S CLOTHING STORE
+</h1>
 
-<button id="loginBtn">Login</button>
+<h2>
+Admin Login
+</h2>
 
-<script type="module" src="./login.js"></script>
+</header>
+
+
+
+<section class="products">
+
+
+<input 
+id="username"
+type="text"
+placeholder="Username">
+
+
+<input 
+id="password"
+type="password"
+placeholder="Password">
+
+
+
+<button onclick="login()">
+
+Login
+
+</button>
+
+
+
+</section>
+
+
+
+<script src="login.js"></script>
+
 
 </body>
+
 </html>
