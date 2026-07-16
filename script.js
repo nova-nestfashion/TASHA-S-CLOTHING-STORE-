@@ -66,6 +66,12 @@ alert("Error: " + error.message);
 
 function displayProducts(products){
 
+const productsDiv = document.getElementById("products");
+
+if(!productsDiv){
+alert("Products section not found");
+return;
+}
 
 productsDiv.innerHTML="";
 
@@ -75,54 +81,30 @@ products.forEach((product)=>{
 
 productsDiv.innerHTML += `
 
+<div class="product-card">
 
-<div class="product-card" onclick="viewProduct('${product.id}')">
+<img src="${product.image}" width="150">
 
 
-<img
-id="img${product.id}"
-src="${product.images ? product.images[0] : product.image}"
->
-
-${
-product.featured
-?
-`<span class="badge">⭐ Featured</span>`
-:
-""
-}
 <h3>${product.name}</h3>
-
 
 <p>${product.category || ""}</p>
 
 <p>K${product.price}</p>
-<button onclick="event.stopPropagation(); viewProduct('${product.id}')">
 
+<p>
+<strong>Stock:</strong> ${product.stock ?? 0}
+</p>
+
+
+<button onclick="viewProduct('${product.id}')">
 View Details
-
 </button>
-<p><strong>Stock:</strong> ${product.stock ?? 0}</p>
-
-${
-(product.stock ?? 0) > 0
-?
-`<button onclick="event.stopPropagation(); addToCart('${product.id}','${product.name}','${product.price}','${product.image}')">
-Add To Cart
-</button>`
-:
-`<button disabled>
-Out of Stock
-</button>`
-}
 
 
 </div>
 
-
 `;
-
-
 
 
 });
