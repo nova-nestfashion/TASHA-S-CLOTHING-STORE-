@@ -5,83 +5,18 @@ collection,
 getDocs,
 doc,
 deleteDoc,
-updateDoc,
 addDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-if(localStorage.getItem("adminLoggedIn") !== "true"){
+const adminLoggedIn = localStorage.getItem("adminLoggedIn");
+
+
+if(adminLoggedIn !== "true"){
 
 window.location.href="login.html";
 
 }
-
-
-const adminProducts = document.getElementById("adminProducts");
-
-
-// Dashboard
-
-async function loadDashboard(){
-
-const productsSnapshot = await getDocs(collection(db,"products"));
-
-let lowStock = 0;
-
-productsSnapshot.forEach((item)=>{
-
-const product = item.data();
-
-if((product.stock || 0) <= 5){
-
-lowStock++;
-
-}
-
-});
-
-
-const ordersSnapshot = await getDocs(collection(db,"orders"));
-
-let orders = 0;
-let pending = 0;
-let sales = 0;
-
-
-ordersSnapshot.forEach((item)=>{
-
-const order = item.data();
-
-orders++;
-
-if(order.status === "Pending"){
-
-pending++;
-
-}
-
-sales += Number(order.total || 0);
-
-});
-
-
-document.getElementById("totalProducts").innerHTML =
-productsSnapshot.size;
-
-document.getElementById("totalOrders").innerHTML =
-orders;
-
-document.getElementById("pendingOrders").innerHTML =
-pending;
-
-document.getElementById("totalSales").innerHTML =
-"K"+sales;
-
-document.getElementById("lowStockProducts").innerHTML =
-lowStock;
-
-}
-
 
 
 // Add Product
@@ -89,50 +24,55 @@ lowStock;
 document.getElementById("addBtn").onclick = async function(){
 
 
+const name = document.getElementById("name").value;
+const price = document.getElementById("price").value;
+const category = document.getElementById("category").value;
+const stock = document.getElementById("stock").value;
+const image = document.getElementById("image").value;
+
+
 await addDoc(collection(db,"products"),{
 
+name:name,
 
-name:document.getElementById("name").value,
+price:Number(price),
 
-price:Number(document.getElementById("price").value),
+category:category,
 
-category:document.getElementById("category").value,
+stock:Number(stock),
 
-stock:Number(document.getElementById("stock").value),
-
-image:document.getElementById("image").value
-
+image:image
 
 });
 
 
-alert("Product added successfully");
-
+alert("Product Added Successfully");
 
 location.reload();
-
 
 };
 
 
 
-// Display Products
+// Load Products
 
-async function loadAdminProducts(){
+async function loadProducts(){
 
-adminProducts.innerHTML="";
+const box = document.getElementById("adminProducts");
+
+box.innerHTML="";
 
 
 const snapshot = await getDocs(collection(db,"products"));
 
 
-snapshot.forEach((docSnap)=>{
+snapshot.forEach((item)=>{
 
 
-const product = docSnap.data();
+const product = item.data();
 
 
-adminProducts.innerHTML += `
+box.innerHTML += `
 
 <div class="product-card">
 
@@ -140,14 +80,14 @@ adminProducts.innerHTML += `
 
 <h3>${product.name}</h3>
 
-<p>K${product.price}</p>
+<p>Price: K${product.price}</p>
 
-<p>${product.category}</p>
+<p>Category: ${product.category}</p>
 
 <p>Stock: ${product.stock}</p>
 
 
-<button onclick="deleteProduct('${docSnap.id}')">
+<button onclick="deleteProduct('${item.id}')">
 Delete
 </button>
 
@@ -156,7 +96,6 @@ Delete
 
 `;
 
-
 });
 
 
@@ -164,12 +103,11 @@ Delete
 
 
 
-
 window.deleteProduct = async function(id){
 
 await deleteDoc(doc(db,"products",id));
 
-alert("Deleted");
+alert("Product deleted");
 
 location.reload();
 
@@ -179,7 +117,7 @@ location.reload();
 
 // Logout
 
-window.logout=function(){
+window.logout = function(){
 
 localStorage.removeItem("adminLoggedIn");
 
@@ -189,6 +127,4 @@ window.location.href="login.html";
 
 
 
-loadDashboard();
-
-loadAdminProducts();
+loadProducts();
