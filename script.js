@@ -217,36 +217,6 @@ displayProducts(filtered);
 
 });
 
-
-
-
-<div>
-
-${
-product.images && product.images[1]
-?
-`<img src="${product.images[1]}" width="45"
-onclick="changeImage('${product.id}','${product.images[1]}')">`
-:""
-}
-
-${
-product.images && product.images[2]
-?
-`<img src="${product.images[2]}" width="45"
-onclick="changeImage('${product.id}','${product.images[2]}')">`
-:""
-}
-
-${
-product.images && product.images[3]
-?
-`<img src="${product.images[3]}" width="45"
-onclick="changeImage('${product.id}','${product.images[3]}')">`
-:""
-}
-
-</div>
 // Add to cart
 
 window.addToCart=function(id,name,price,image){
