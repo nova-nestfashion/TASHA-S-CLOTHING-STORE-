@@ -1,4 +1,5 @@
 import { db } from "./firebase.js";
+alert("SCRIPT JS IS RUNNING");
 
 import {
 collection,
