@@ -251,4 +251,8 @@ window.viewProduct = function(id){
     window.location.href = "product.html?id=" + id;
 
 };
-loadProducts();
+window.onload = function(){
+
+    loadProducts();
+
+};
