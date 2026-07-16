@@ -41,19 +41,21 @@ id:doc.id,
 
 });
 
-console.log(allProducts);
+
+alert("Products found: " + allProducts.length);
+
 
 displayProducts(allProducts);
+
 
 displayFeatured(
 allProducts.filter(product => product.featured === true)
 );
 
+
 }catch(error){
 
-console.error(error);
-
-alert(error.message);
+alert("Error: " + error.message);
 
 }
 
