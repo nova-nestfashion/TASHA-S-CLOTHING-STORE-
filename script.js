@@ -68,47 +68,29 @@ function displayProducts(products){
 
 const productsDiv = document.getElementById("products");
 
-if(!productsDiv){
-alert("Products section not found");
-return;
-}
-
-productsDiv.innerHTML="";
-
+productsDiv.innerHTML = "<h2>TEST PRODUCTS LOADED</h2>";
 
 products.forEach((product)=>{
 
-
 productsDiv.innerHTML += `
 
-<div class="product-card">
+<div style="background:white;padding:20px;margin:20px;border:2px solid black;">
 
 <img src="${product.image}" width="150">
 
-
 <h3>${product.name}</h3>
 
-<p>${product.category || ""}</p>
+<p>Category: ${product.category}</p>
 
-<p>K${product.price}</p>
+<p>Price: K${product.price}</p>
 
-<p>
-<strong>Stock:</strong> ${product.stock ?? 0}
-</p>
-
-
-<button onclick="viewProduct('${product.id}')">
-View Details
-</button>
-
+<p>Stock: ${product.stock}</p>
 
 </div>
 
 `;
 
-
 });
-
 
 }
 
